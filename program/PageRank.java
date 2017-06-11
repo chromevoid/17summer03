@@ -14,10 +14,7 @@ public class PageRank {
 			System.exit(-1);
 		}
 
-		Configuration conf = new Configuration();
-        conf.set("stream.reduce.output.field.separator"," ");
-
-		Job job = new Job(conf);
+		Job job = new Job();
 		job.setNumReduceTasks(1);
 		job.setJarByClass(PageRank.class);
 		job.setJobName("PageRank");
