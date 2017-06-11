@@ -28,7 +28,8 @@ public class PageRankExtra {
     		FileOutputFormat.setOutputPath(job, outPath);
 			job.setMapperClass(PageRankMapper.class);
 			job.setReducerClass(PageRankReducer.class);
-			
+			job.setOutputKeyClass(Text.class);
+			job.setOutputValueClass(Text.class);
 			job.waitForCompletion(true);
 			inPath = outPath;
 		}
