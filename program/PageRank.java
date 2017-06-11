@@ -1,5 +1,6 @@
 // Pagerank
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
@@ -18,6 +19,9 @@ public class PageRank {
 		job.setNumReduceTasks(1);
 		job.setJarByClass(PageRank.class);
 		job.setJobName("PageRank");
+
+		Configuration conf = job.getConfiguration();
+		conf.set("mapreduce.output.textoutputformat.separator", " ");
 
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
