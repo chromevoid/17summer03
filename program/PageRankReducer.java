@@ -22,7 +22,7 @@ extends Reducer<Text, Text, Text, Text> {
 				outlinks = part + " ";
 			}
 		}
-		String result = outlinks + newPagerank;
+		String result = outlinks + Double.toString(newPagerank).substring(0, 8);
 		context.write(key, new Text(result));
 	}
 }
